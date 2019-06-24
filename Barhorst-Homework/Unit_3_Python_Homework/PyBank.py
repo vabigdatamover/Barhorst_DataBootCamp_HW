@@ -8,7 +8,7 @@ Created on Sun Jun 23 18:47:40 2019
 import os
 import csv
 
-#csvpath = os.path.join("../Resources", "budget_data.csv")
+csvpath = os.path.join("../Resources", "budget_data.csv")
 csvpath = os.path.join(r"C:\Users\EasyE\Desktop\Unit_3_Python\Resources")
 csvpath = os.path.join(r"C:\Users\EasyE\Barhorst_DataBootCamp_HW\Barhorst-Homework\Unit_3_Python_Homework\Resources")
 
@@ -17,7 +17,7 @@ with open(csvpath, newline="") as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
     
 #set the output of the text file
-text_path = "output.txt"
+#text_path = "output.txt"
  
 
      #print(Financial Analysis)
