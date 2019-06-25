@@ -10,9 +10,6 @@ import csv
 
 csvpath = os.path.join("Resources",'budget_data.csv')
 
-#csvpath = os.path.join(r"C:\Users\EasyE\Desktop\Unit_3_Python\Resources")
-#csvpath = os.path.join(r"C:\Users\EasyE\Barhorst_DataBootCamp_HW\Barhorst-Homework\Unit_3_Python_Homework\Resources")
-
 # Open the CSV
 with open(csvpath, newline="") as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
@@ -20,6 +17,10 @@ with open(csvpath, newline="") as csvfile:
 #set the output of the text file
 #text_path = "output.txt"
  
+def BankData(data):
+    monthes = data[0]
+    values = int(data[1])
+    
 
     #print(Financial Analysis)
     #print(--------------------------------)
@@ -30,51 +31,43 @@ with open(csvpath, newline="") as csvfile:
     
    
     
-    # Loop through and print to count the number of months
-    months = 0
+# Loop through and print to count the number of months
+    month = 0
     for row in csvreader:
-        months += 1
-    print(f'Total Months: {months}')
+        month += 1
+    print(f'Total Months: {month}')
                     
-    # Loop through print the net total amount of "Profit/Losses" over the entire period
-    netamount = 0
-    for column in csvreader: 
-        netamount = sum(column[1])
-    print(f'Total: $ {netamount}')
-#                     
-#            
-#       # Loop through and print the average of the changes in "Profit/Losses" over the entire period
-#    for row in csvreader:
-#       print(f'Average Change: $ (avg(row[1]))')
-#            
-#        # Loop through and print the greatest increase in profits (date and amount) over the entire period
-#    for row in csvreader:
-#        print(f'Greatest Increase of Profits: $ (max(row[1]))')
-#            
-#         # Loop through and print the the greatest decrease in losses (date and amount) over the entire period
-#    for row in csvreader:
-#        print(f'Greatest Decrease of Profits: $ (min(row[1])) + (row[0])')
-    
-    
-    #for row in csvreader:
-       # if float(row[7]) >= 5:
-            #print(row[0] + " contains 5 grams of fiber ")
-            #print(row[0] + " has " + row[7] + " grams of fiber")
+# Loop through print the net total amount of "Profit/Losses" over the entire period
+    profit_losses = sum(values)*100
+    print(f'Total: $ {profit_losses}%')
+           
+# Loop through and print the average of the changes in "Profit/Losses" over the entire period
+    average_change = average(value)*100
+    print(f'Average Change: $ {average_change}')
             
+# Loop through and print the greatest increase in profits (date and amount) over the entire period
+
+    greatest_increase = max(value)*100
+    print(f'Greatest Increase: {monthes} (${greatest_increase})')
+            
+# Loop through and print the the greatest decrease in losses (date and amount) over the entire period
+    greatest_decrease = min(value)*100
+    print(f'Greatest Decrease of Profits: {monthes} (${greatest_decrease})')
+          
 # Specify the file to write to
-#output_path = os.path.join("..", "output", "PyBankResults.csv")
+output_path = os.path.join("Resources",'PyBank_Export.csv')
 
 # Open the file using "write" mode. Specify the variable to hold the contents
-##with open(output_path, 'w', newline='') as csvfile:
+with open(output_path, 'w', newline='') as csvfile:
 #
 #    # Initialize csv.writer
-#    #csvwriter = csv.writer(csvfile, delimiter=',')
+     csvwriter = csv.writer(csvfile, delimiter=',')
 #
 #    # Write the first row (column headers)
-#    #csvwriter.writerow(['Financial Analysis'])
+     csvwriter.writerow(['Financial Analysis'])
 #
 #    # Write the line breaker second row
-#    csvwriter.writerow(['---------------------------------------------'])
+     csvwriter.writerow(['---------------------------------------------'])
 #    
 #      # Write the financial results
-#    csvwriter.writerow([''])
+     csvwriter.writerow([''])
