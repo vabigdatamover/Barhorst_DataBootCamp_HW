@@ -38,21 +38,21 @@ def BankData(data):
     print(f'Total Months: {month}')
                     
 # Loop through print the net total amount of "Profit/Losses" over the entire period
-    profit_losses = sum(values)*100
-    print(f'Total: $ {profit_losses}%')
+        profit_losses = sum(values)*100
+        print(f'Total: $ {profit_losses}%')
            
 # Loop through and print the average of the changes in "Profit/Losses" over the entire period
-    average_change = average(value)*100
-    print(f'Average Change: $ {average_change}')
+        average_change = average(value)*100
+        print(f'Average Change: $ {average_change}')
             
 # Loop through and print the greatest increase in profits (date and amount) over the entire period
 
-    greatest_increase = max(value)*100
-    print(f'Greatest Increase: {monthes} (${greatest_increase})')
+        greatest_increase = max(value)*100
+        print(f'Greatest Increase: {monthes} (${greatest_increase})')
             
 # Loop through and print the the greatest decrease in losses (date and amount) over the entire period
-    greatest_decrease = min(value)*100
-    print(f'Greatest Decrease of Profits: {monthes} (${greatest_decrease})')
+        greatest_decrease = min(value)*100
+        print(f'Greatest Decrease of Profits: {monthes} (${greatest_decrease})')
           
 # Specify the file to write to
 output_path = os.path.join("Resources",'PyBank_Export.csv')
