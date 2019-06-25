@@ -22,9 +22,9 @@ with open(csvpath, newline="") as csvfile:
 #    county = data[1]
 #    canidate = data[2]
 #    
-#
-#    #print(Election Results)
-#    #print(--------------------------------)
+
+    print(f'Election Results')
+    print(f'--------------------------------')
 #    
     # Skip Header  
     next(csvreader, None)
@@ -38,24 +38,24 @@ with open(csvpath, newline="") as csvfile:
         votes += 1
     print(f'Total Voters: {votes}')
     
-     #print(--------------------------------)
+    print(f'--------------------------------')
                     
 ## Loop through print a complete list of candidates who received votes
 #    canidate_names = set(canidate)
-#    print(f'Total: $ {canidate_names}')
+#        print(f'Total: $ {canidate_names}')
 #           
 ## Loop through and print the percentage and total of votes each candidate won
 #    canidate_percentage= dis(canidate_names)*100
-#    canidate_total = sum({canidate_name})
+#        canidate_total = sum({canidate_name})
 #    print(f'{canidate}: {canidate_percentage}% ({canidate_total})')
      
-      #print(--------------------------------)
+    print(f'--------------------------------')
 #            
 ### Loop through and print the winner of the election based on popular vote
-##        greatest_decrease = min(value)*100
-##        print(f'Greatest Decrease of Profits: {monthes} (${greatest_decrease})')
+##        canidate_winner = min(value)*100
+##        print(f'Winner: {monthes} (${greatest_decrease})')
       
-       #print(--------------------------------)
+    print(f'--------------------------------')
 #          
 ## Specify the file to write to
 #output_path = os.path.join("Resources",'PyPoll_Export.csv')
