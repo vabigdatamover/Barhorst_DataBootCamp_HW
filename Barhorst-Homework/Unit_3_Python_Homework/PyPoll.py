@@ -41,12 +41,12 @@ with open(csvpath, newline="") as csvfile:
     print(f'--------------------------------')
                     
 ## Loop through print a complete list of candidates who received votes
-#    canidate_names = canidate.value
+#    canidate_names = canidate.value()
 #        print(f'Total: $ {canidate_names}')
 #           
 ## Loop through and print the percentage and total of votes each candidate won
 #    canidate_percentage= dis(canidate_names)*100
-#        canidate_total = sum({canidate_name})
+#        canidate_total = sum(canidate_name)
 #    print(f'{canidate}: {canidate_percentage}% ({canidate_total})')
      
     print(f'--------------------------------')

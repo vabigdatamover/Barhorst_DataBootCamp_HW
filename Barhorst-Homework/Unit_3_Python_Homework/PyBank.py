@@ -16,21 +16,18 @@ with open(csvpath, newline="") as csvfile:
     
 #set the output of the text file
 #text_path = "output.txt"
+    
+    print(f'Financial Analysis')
+    print(f'--------------------------------')  
  
-    def BankData(data):
+def BankData(data):
     monthes = data[0]
     values = int(data[1])
-    
-
-    #print(Financial Analysis)
-    #print(--------------------------------)
     
     # Skip Header  
     next(csvreader, None)
     #print(f"Header: {csvreader}")
-    
-   
-    
+      
 # Loop through and print to count the number of months
     month = 0
     for row in csvreader:
@@ -42,16 +39,16 @@ with open(csvpath, newline="") as csvfile:
     print(f'Total: $ {profit_losses}%')
            
 # Loop through and print the average of the changes in "Profit/Losses" over the entire period
-    average_change = average(value)*100
+    average_change = values.mean()*100
     print(f'Average Change: $ {average_change}')
             
 # Loop through and print the greatest increase in profits (date and amount) over the entire period
 
-    greatest_increase = max(value)*100
+    greatest_increase = max(values)*100
     print(f'Greatest Increase: {monthes} (${greatest_increase})')
             
 # Loop through and print the the greatest decrease in losses (date and amount) over the entire period
-    greatest_decrease = min(value)*100
+    greatest_decrease = min(values)*100
     print(f'Greatest Decrease of Profits: {monthes} (${greatest_decrease})')
           
 # Specify the file to write to
