@@ -8,16 +8,17 @@ Created on Sun Jun 23 18:47:40 2019
 import os
 import csv
 
+#Open the CSV
 csvpath = os.path.join("Resources",'budget_data.csv')
 
-# Open the CSV
+# Delimit the CSV
 with open(csvpath, newline="") as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
   
     # Skip Header  
     next(csvreader, None)
-    #print(f"Header: {csvreader}")
     
+    #Print a header
     print(f'Financial Analysis')
     print(f'--------------------------------') 
     
@@ -38,14 +39,7 @@ with open(csvpath, newline="") as csvfile:
         revenue_change == int(row[1])
         previous_revenue == int(row[1])
         month_of_change = row[0]
-        
-        
-#        if month % 2 =! 0:
-#            #SAVE THIS VALUE AS odd_row_value
-#        else:
-#            #SUBTRACT THIS ROW VALUE FROM odd_row_value
-#            #put that difference in differences
-        
+               
 #Loop though and calculate the average change in revenue between months over the entire period
         revenue_change = float(row[1]) - previous_revenue
         previous_revenue = float(row[1])
@@ -54,7 +48,6 @@ with open(csvpath, newline="") as csvfile:
         #month_of_change = [[row["Date"] + [row["Date"]]
         
 #The greatest increase in revenue (date and amount) over the entire period
-      
         if revenue_change>greatest_increase[1]:
             greatest_increase[1]= revenue_change
             #greatest_increase[0] = row['Date']
@@ -76,40 +69,7 @@ with open(csvpath, newline="") as csvfile:
     print(f'Greatest Increase: {greatest_increase[0]} (${greatest_increase[1]})')
 # Loop through and print the the greatest decrease in losses (date and amount) over the entire period
     print(f'Greatest Decrease of Profits: {greatest_decrease[0]} (${greatest_decrease[1]})')
-    
-    
-    
-    
-
-#set the output of the text file
-#text_path = "output.txt"
-        
-    
-#def BankData(data):
-#    monthes = data[0]
-#    values = int(data[1])
-#    
-
-                    
-## Loop through print the net total amount of "Profit/Losses" over the entire period
-#    profit_losses = sum(values)*100
-#    print(f'Total: $ {profit_losses}%')
-           
-# Loop through and print the average of the changes in "Profit/Losses" over the entire period
-#    average_change = values.mean()*100
-#    print(f'Average Change: $ {average_change}')
-            
-# Loop through and print the greatest increase in profits (date and amount) over the entire period
-
-#    greatest_increase = max(values)*100
-#    print(f'Greatest Increase: {monthes} (${greatest_increase})')
-#            
-# Loop through and print the the greatest decrease in losses (date and amount) over the entire period
-#    greatest_decrease = min(values)*100
-#    print(f'Greatest Decrease of Profits: {monthes} (${greatest_decrease})')
-    
-#    return 
-          
+              
 # Specify the file to write to
 output_path = os.path.join("Resources",'PyBank_Export.csv')
 
@@ -132,10 +92,10 @@ with open(output_path, 'w', newline='') as csvfile:
      csvwriter.writerow([(f'Total: {total}')])
      
       # Write the financial results
-     #csvwriter.writerow([(f'Average Change: {average_change}')])
+     csvwriter.writerow([(f'Average Change: {revenue_change}')])
      
       # Write the financial results
-     #csvwriter.writerow([(f'Greatest Increase: {monthes} (${greatest_increase}')])
+     csvwriter.writerow([(f'Greatest Increase: {greatest_increase[0]} (${greatest_increase[1]})')])
      
       # Write the financial results
-     #csvwriter.writerow([(f'Greatest Decrease of Profits: {monthes} (${greatest_decrease})')])
+     csvwriter.writerow([(f'')])
