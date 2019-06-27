@@ -35,7 +35,9 @@ with open(csvpath, newline="") as csvfile:
     for row in csvreader:
         month += 1
         total += int(row[1])
-        revenue_change += int(row[1])
+        revenue_change == int(row[1])
+        previous_revenue == int(row[1])
+        month_of_change = row[0]
         
         
 #        if month % 2 =! 0:
@@ -45,21 +47,22 @@ with open(csvpath, newline="") as csvfile:
 #            #put that difference in differences
         
 #Loop though and calculate the average change in revenue between months over the entire period
-        revenue_change = float(row["Profit/Losses"]) - previous_revenue
-        previous_revenue = float(row['Profit/Losses'])
+        revenue_change = float(row[1]) - previous_revenue
+        previous_revenue = float(row[1])
         revenue_change_list = revenue_change_list + [revenue_change]
-        month_of_change = [month_of_change] + [row["Date"]]
+        #month_of_change = [month_of_change] + [row["Date"]]
+        #month_of_change = [[row["Date"] + [row["Date"]]
         
 #The greatest increase in revenue (date and amount) over the entire period
       
         if revenue_change>greatest_increase[1]:
             greatest_increase[1]= revenue_change
-            greatest_increase[0] = row['Date']
+            #greatest_increase[0] = row['Date']
             
 #The greatest decrease in revenue (date and amount) over the entire period
         if revenue_change<greatest_decrease[1]:
             greatest_decrease[1]= revenue_change
-            greatest_decrease[0] = row['Date']
+            #greatest_decrease[0] = row['Date']
     revenue_average = sum(revenue_change_list)/len(revenue_change_list)
           
         
