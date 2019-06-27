@@ -24,26 +24,57 @@ with open(csvpath, newline="") as csvfile:
     # Loop through and print to count the number of months
     month = 0
     total = 0
-    differences = []
-    odd_row_value = 0
-    even_row_value = 0
+    revenue = []
+    previous_revenue = 0
+    month_of_change = []
+    revenue_change = 0
+    greatest_decrease = ["", 9999999]
+    greatest_increase = ["", 0]
+    revenue_change_list = []
+    revenue_average = 0
     for row in csvreader:
         month += 1
         total += int(row[1])
+        revenue_change += int(row[1])
+        
+        
 #        if month % 2 =! 0:
 #            #SAVE THIS VALUE AS odd_row_value
 #        else:
 #            #SUBTRACT THIS ROW VALUE FROM odd_row_value
 #            #put that difference in differences
-#            
+        
+#Loop though and calculate the average change in revenue between months over the entire period
+        revenue_change = float(row["Profit/Losses"]) - previous_revenue
+        previous_revenue = float(row['Profit/Losses'])
+        revenue_change_list = revenue_change_list + [revenue_change]
+        month_of_change = [month_of_change] + [row["Date"]]
+        
+#The greatest increase in revenue (date and amount) over the entire period
+      
+        if revenue_change>greatest_increase[1]:
+            greatest_increase[1]= revenue_change
+            greatest_increase[0] = row['Date']
+            
+#The greatest decrease in revenue (date and amount) over the entire period
+        if revenue_change<greatest_decrease[1]:
+            greatest_decrease[1]= revenue_change
+            greatest_decrease[0] = row['Date']
+    revenue_average = sum(revenue_change_list)/len(revenue_change_list)
+          
         
  # Loop through and print to count the number of months        
     print(f'Total Months: {month}')
-# Loop through print the net total amount of "Profit/Losses" over the entire period     
+# Loop through and print the net total amount of "Profit/Losses" over the entire period     
     print(f'Total: $ {total}')
 # Loop through and print the average of the changes in "Profit/Losses" over the entire period   
-    #average_change = month.mean()*100
-    #print(f'Average Change: $ {sum(total)}')
+    print(f'Average Change: $ {revenue_average}')
+# Loop through and print the greatest increase in profits (date and amount) over the entire period
+    print(f'Greatest Increase: {greatest_increase[0]} (${greatest_increase[1]})')
+# Loop through and print the the greatest decrease in losses (date and amount) over the entire period
+    print(f'Greatest Decrease of Profits: {greatest_decrease[0]} (${greatest_decrease[1]})')
+    
+    
     
     
 
@@ -92,4 +123,16 @@ with open(output_path, 'w', newline='') as csvfile:
      csvwriter.writerow(['---------------------------------------------'])
 #    
 #      # Write the financial results
-     csvwriter.writerow([''])
+     csvwriter.writerow([(f'Total Months: {month}')])
+     
+      # Write the financial results
+     csvwriter.writerow([(f'Total: {total}')])
+     
+      # Write the financial results
+     #csvwriter.writerow([(f'Average Change: {average_change}')])
+     
+      # Write the financial results
+     #csvwriter.writerow([(f'Greatest Increase: {monthes} (${greatest_increase}')])
+     
+      # Write the financial results
+     #csvwriter.writerow([(f'Greatest Decrease of Profits: {monthes} (${greatest_decrease})')])
