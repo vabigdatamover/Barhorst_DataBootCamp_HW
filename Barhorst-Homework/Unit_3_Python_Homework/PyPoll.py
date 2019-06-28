@@ -75,7 +75,7 @@ if len(winner_list) > 1:
                     
 ## Loop through print a complete list of candidates who received votes
 
-    print(f'{str(winner_list[0])}')           
+    print(f'(winner[0]) + ": " + str(winner[2]) +'  ' + clean_data[1]) + ')          
 ## Loop through and print the percentage and total of votes each candidate won
 
      
