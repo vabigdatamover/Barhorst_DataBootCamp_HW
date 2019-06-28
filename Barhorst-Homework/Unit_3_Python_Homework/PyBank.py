@@ -22,7 +22,7 @@ with open(csvpath, newline="") as csvfile:
     print(f'Financial Analysis')
     print(f'--------------------------------') 
     
-    # Loop through and print to count the number of months
+    # variables
     month = 0
     total = 0
     revenue = []
@@ -66,7 +66,7 @@ with open(csvpath, newline="") as csvfile:
 # Loop through and print the average of the changes in "Profit/Losses" over the entire period   
     print(f'Average Change: $ {revenue_average}')
 # Loop through and print the greatest increase in profits (date and amount) over the entire period
-    print(f'Greatest Increase: {greatest_increase[0]} (${greatest_increase[1]})')
+    print(f'Greatest Increase of Profits: {greatest_increase[0]} (${greatest_increase[1]})')
 # Loop through and print the the greatest decrease in losses (date and amount) over the entire period
     print(f'Greatest Decrease of Profits: {greatest_decrease[0]} (${greatest_decrease[1]})')
               
