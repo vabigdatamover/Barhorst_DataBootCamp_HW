@@ -51,13 +51,13 @@ with open(csvpath, newline="") as csvfile:
 #The greatest increase in revenue (date and amount) over the entire period
         if revenue_change>greatest_increase[1]:
             greatest_increase[1]= revenue_change
-            #greatest_increase[0] = row['Date']
+            greatest_increase[0] = row[0]
             
 #The greatest decrease in revenue (date and amount) over the entire period
         if revenue_change<greatest_decrease[1]:
             greatest_decrease[1]= revenue_change
-            #greatest_decrease[0] = row['Date']
-    revenue_average = sum(revenue_change_list)/len(revenue_change_list)
+            greatest_decrease[0] = row[0]
+    revenue_average = round(sum(revenue_change_list)/len(revenue_change_list))
           
         
  # Loop through and print to count the number of months        
