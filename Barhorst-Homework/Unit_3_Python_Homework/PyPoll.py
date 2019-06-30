@@ -64,7 +64,7 @@ else:
 
           
 # Specify the file to write to
-output_path = os.path.join("Resources",'PyPoll_Export1.txt')
+output_path = os.path.join("Resources",'PyPoll_Export.txt')
 
 #Open the file using "write" mode. Specify the variable to hold the contents
 with open(output_path, 'w', newline='') as txtfile:
