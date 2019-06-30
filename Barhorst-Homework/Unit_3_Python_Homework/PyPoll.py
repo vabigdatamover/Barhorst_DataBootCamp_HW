@@ -22,7 +22,7 @@ with open(csvpath, newline="") as csvfile:
     # Skip CSV Header  
     next(csvreader, None)
 
-#Creates an emptyt list for canidate names
+#Creates an emptyt list for candidate names
     poll = {}       
 #creates a list
     total_votes = 0
@@ -39,62 +39,56 @@ with open(csvpath, newline="") as csvfile:
     print(f'--------------------------------')
     
 # creates vote percent list
+# creates winner_list to put winners (even if there is a tie)
 vote_percent = {}
+max_vote_percent = 0
+winning_candidate = ''
 for candidate in poll:
     candidate_votes = poll[candidate]
     candidate_vote_percent = round((candidate_votes / total_votes)*100, 3)
     vote_percent[candidate] = [candidate_vote_percent, candidate_votes]
-
-## Loop through print a complete list of candidates who received votes
-    print(f'{candidate}: {candidate_vote_percent} ({candidate_votes}) ')   
-# zips candidates, num_votes, vote_percent into tuples
-#clean_data = list(zip(candidates, num_votes, vote_percent))
-
-#creates winner_list to put winners (even if there is a tie)
-winner_list = []
-
-for name in winner_list:
-    if max(total_votes) == name[1]:
-        winner_list.append(name[0])
-
-# makes winner_list a str with the first entry
-#winner = winner_list[0]
-
-#only runs if there is a tie and puts additional winners into a string separated by commas
-#if len(winner_list) > 1:
-#    for w in range(1, len(winner_list)):
-#        winner = winner + ", " + winner_list[w]
-                    
-## Loop through print a complete list of candidates who received votes
-
-    #print(f'{candidate}: {candidate_vote_percent} ({candidate_votes}) ')   
-       
-## Loop through and print the percentage and total of votes each candidate won
-    print(f'--------------------------------')
-    print(f'Winner:  {winner_list}')  
+    if candidate_vote_percent > max_vote_percent:
+        winning_candidate = candidate 
+        max_vote_percent = candidate_vote_percent
+ 
      
-    #print(f'--------------------------------')
-#            
-### Loop through and print the winner of the election based on popular vote
-##        canidate_winner = min(value)*100
-##        print(f'Winner: {monthes} (${greatest_decrease})')
-      
+## Loop through print a complete list of candidates who received votes
+    print(f'{candidate}: {candidate_vote_percent}% ({candidate_votes}) ') 
+#prints a winner_list to show winners (even if there is a tie)
+else:
     print(f'--------------------------------')
-#          
-## Specify the file to write to
-#output_path = os.path.join("Resources",'PyPoll_Export.csv')
-#
-## Open the file using "write" mode. Specify the variable to hold the contents
-#with open(output_path, 'w', newline='') as csvfile:
-##
-##    # Initialize csv.writer
-#     csvwriter = csv.writer(csvfile, delimiter=',')
-##
-##    # Write the first row (column headers)
-#     csvwriter.writerow(['Financial Analysis'])
-##
-##    # Write the line breaker second row
-#     csvwriter.writerow(['---------------------------------------------'])
-##    
-##      # Write the financial results
-#     csvwriter.writerow([''])
+    
+    print(f'Winner:  {winning_candidate}')  
+    
+
+
+          
+# Specify the file to write to
+output_path = os.path.join("Resources",'PyPoll_Export1.txt')
+
+#Open the file using "write" mode. Specify the variable to hold the contents
+with open(output_path, 'w', newline='') as txtfile:
+
+    # Initialize csv.writer
+     txtwriter = csv.writer(txtfile, delimiter=',')
+     
+    # Write Election Results 
+     txtwriter.writerow(['Election Results'])
+
+   # Write the line breaker first formula
+     txtwriter.writerow(['---------------------------------------------'])
+    
+      # Write the Total Voters
+     txtwriter.writerow([(f'Total Voters: {total_votes}')])
+     
+    # Write the line breaker second formula
+     txtwriter.writerow(['---------------------------------------------'])
+     
+      # Write the candidate: vote percentage and candidate votes
+     txtwriter.writerow([f'{candidate}: {candidate_vote_percent}% ({candidate_votes})'])
+          
+     # Write the line breaker third formula
+     txtwriter.writerow(f'--------------------------------')
+    
+    # Write the winning candidate    
+     txtwriter.writerow(f'Winner:  {winning_candidate}')

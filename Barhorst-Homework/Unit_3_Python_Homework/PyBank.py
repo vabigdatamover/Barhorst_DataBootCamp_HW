@@ -1,102 +1,88 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jun 23 18:47:40 2019
-#PyBank
-@author: Gene Barhorst
+Created on Sat Jun 29 20:03:55 2019
+
+@author: EasyE
 """
 
+#import modules
 import os
 import csv
 
-#Open the CSV
+# Files to Load
 csvpath = os.path.join("Resources",'budget_data.csv')
 
-# Delimit the CSV
-with open(csvpath, newline="") as csvfile:
+with open(csvpath, newline="", encoding="utf-8") as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
-  
-    # Skip Header  
-    next(csvreader, None)
-    
-    #Print a header
-    print(f'Financial Analysis')
-    print(f'--------------------------------') 
-    
-    # variables
-    month = 0
-    total = 0
-    revenue = []
-    previous_revenue = 0
-    month_of_change = []
-    revenue_change = 0
-    greatest_decrease = ["", 9999999]
-    greatest_increase = ["", 0]
-    revenue_change_list = []
-    revenue_average = 0
-    for row in csvreader:
-# Counts months
-        month += 1
-# Counts total
-        total += int(row[1])
-        revenue_change == int(row[1])
-        previous_revenue == int(row[1])
-        month_of_change = (month, total)
-               
-#Loop though and calculate the average change in revenue between months over the entire period
-        revenue_change = float(row[1]) - previous_revenue
-        previous_revenue = float(row[1])
-        revenue_change_list = revenue_change_list + [revenue_change]
-        month_of_change = [month_of_change] + ['Date']
+
+# Create empty lists to iterate through specific rows for the following variables
+    total_months = []
+    total_profit = []
+    monthly_profit_change = []
+ 
+    # Skip the header labels to iterate with the values
+    next(csvreader, None) 
+
+    # Iterate through the rows in the stored file contents
+    for row in csvreader: 
+
+        # Append the total months and total profit to their corresponding lists
+        total_months.append(row[0])
+        total_profit.append(int(row[1]))
+
+    # Iterate through the profits in order to get the monthly change in profits
+    for i in range(len(total_profit)-1):
         
-#The greatest increase in revenue (date and amount) over the entire period
-        if revenue_change>greatest_increase[1]:
-            greatest_increase[1]= revenue_change
-            greatest_increase[0] = row[0]
-            
-#The greatest decrease in revenue (date and amount) over the entire period
-        if revenue_change<greatest_decrease[1]:
-            greatest_decrease[1]= revenue_change
-            greatest_decrease[0] = row[0]
-    revenue_average = round(sum(revenue_change_list)/len(revenue_change_list))
-          
+        # Take the difference between two months and append to monthly profit change
+        monthly_profit_change.append(total_profit[i+1]-total_profit[i])
         
- # Loop through and print to count the number of months        
-    print(f'Total Months: {month}')
-# Loop through and print the net total amount of "Profit/Losses" over the entire period     
-    print(f'Total: $ {total}')
-# Loop through and print the average of the changes in "Profit/Losses" over the entire period   
-    print(f'Average Change: $ {revenue_average}')
-# Loop through and print the greatest increase in profits (date and amount) over the entire period
-    print(f'Greatest Increase of Profits: {greatest_increase[0]} (${greatest_increase[1]})')
-# Loop through and print the the greatest decrease in losses (date and amount) over the entire period
-    print(f'Greatest Decrease of Profits: {greatest_decrease[0]} (${greatest_decrease[1]})')
-              
+# Obtain the max and min of the the montly profit change list
+max_increase_value = max(monthly_profit_change)
+max_decrease_value = min(monthly_profit_change)
+
+# Correlate max and min to the proper month using month list and index from max and min
+#We use the plus 1 at the end since month associated with change is the + 1 month or next month
+max_increase_month = monthly_profit_change.index(max(monthly_profit_change)) + 1
+max_decrease_month = monthly_profit_change.index(min(monthly_profit_change)) + 1 
+
+# Print Statements
+
+print("Financial Analysis")
+print("----------------------------")
+print(f"Total Months: {len(total_months)}")
+print(f"Total: ${sum(total_profit)}")
+print(f"Average Change: {round(sum(monthly_profit_change)/len(monthly_profit_change),2)}")
+print(f"Greatest Increase in Profits: {total_months[max_increase_month]} (${(str(max_increase_value))})")
+print(f"Greatest Decrease in Profits: {total_months[max_decrease_month]} (${(str(max_decrease_value))})")
+
 # Specify the file to write to
-output_path = os.path.join("Resources",'PyBank_Export.csv')
+output_path = os.path.join("Resources",'PyBank_Export.txt')
 
 # Open the file using "write" mode. Specify the variable to hold the contents
 with open(output_path, 'w', newline='') as csvfile:
 #
 #    # Initialize csv.writer
-     csvwriter = csv.writer(csvfile, delimiter=',')
+     txtwriter = csv.writer(csvfile, delimiter=',')
 #
 #    # Write the first row (column headers)
-     csvwriter.writerow(['Financial Analysis'])
+     txtwriter.writerow(['Financial Analysis'])
 #
 #    # Write the line breaker second row
-     csvwriter.writerow(['---------------------------------------------'])
+     txtwriter.writerow(['---------------------------------------------'])
 #    
 #      # Write the financial results
-     csvwriter.writerow([(f'Total Months: {month}')])
+     txtwriter.writerow([(f'Total Months: {len(total_months)}')])
      
       # Write the financial results
-     csvwriter.writerow([(f'Total: {total}')])
+     txtwriter.writerow([(f'Total: ${sum(total_profit)}')])
      
       # Write the financial results
-     csvwriter.writerow([(f'Average Change: {revenue_change}')])
+     txtwriter.writerow([(f'Average Change: {round(sum(monthly_profit_change)/len(monthly_profit_change),2)}')])
      
       # Write the financial results
-     csvwriter.writerow([(f'Greatest Increase: {greatest_increase[0]} (${greatest_increase[1]})')])
+     txtwriter.writerow([(f'Greatest Increase: {total_months[max_increase_month]} (${(str(max_increase_value))})')])
      
       # Write the financial results
-     csvwriter.writerow([(f'')])
+     txtwriter.writerow([(f'Greatest Decrease: {total_months[max_decrease_month]} (${(str(max_decrease_value))})')])
+     
+
