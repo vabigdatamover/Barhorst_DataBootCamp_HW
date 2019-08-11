@@ -6,15 +6,16 @@ ON e.emp_no=s.emp_no;
 
 -- 2. List employees who were hired in 1986.
 
-SELECT * FROM employees
-WHERE hire_date LIKE '1986%';
-
-or 
-
 SELECT first_name, last_name, hire_date FROM employees
 WHERE hire_date >= '1986-01-01'
 AND hire_date <= '1986-12-31'
 ORDER BY hire_date;
+
+or
+
+SELECT first_name, last_name, hire_date 
+FROM employees
+WHERE hire_date BETWEEN '1986-01-01' AND '1987-01-01';
 
 -- 3. List the manager of each department with the following information: department number, department name, 
 

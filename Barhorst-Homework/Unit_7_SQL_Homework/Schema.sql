@@ -1,9 +1,9 @@
-DROP TABLE IF EXISTS departments;
-DROP TABLE IF EXISTS dept_emp;
-DROP TABLE IF EXISTS dept_manager;
-DROP TABLE IF EXISTS employees;
-DROP TABLE IF EXISTS salaries;
-DROP TABLE IF EXISTS titles;
+--DROP TABLE departments;
+--DROP TABLE dept_emp;
+--DROP TABLE dept_manager;
+--DROP TABLE employees;
+--DROP TABLE salaries;
+--DROP TABLE titles;
  
 -- Import CSV Files Into Corresponding SQL Table
 
