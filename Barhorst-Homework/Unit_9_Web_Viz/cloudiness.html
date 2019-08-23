@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Web Visualization-Weather Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="index.html">Latitude</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Visualizations <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="lat_temps.html">Latitude vs. Max Temperature</a></li>
+              <li><a href="lat_hum.html">Latitude vs. Humidity</a></li>
+              <li><a href="lat_cloud.html">Latitude vs. Cloudiness</a></li>
+              <li><a href="lat_wind.html">Latitude vs. Wind Speed</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="glob_temps.html">Global Temperatures</a></li>
+              <li><a href="glob_hum.html">Global Humidity</a></li>
+              <li><a href="glob_cloud.html">Global Cloudiness</a></li>
+              <li><a href="glob_wind.html">Global Wind Speed</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="index.html">Home</a></li>
+            </ul>
+          </li>
+          <li><a href="comparison.html">Comparison</a></li>
+          <li><a href="data.html">Data</a></li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+
+  <!-- Creates the Overall Grid -->
+  <div class="container">
+
+    <!-- First Row -->
+    <div class="row">
+
+      <div class="col-md-8 pad top"> <br>
+
+        <h1>Latitude vs. Cloudiness</h1> <br>
+
+          <div class="pull-left">
+            <img src="./input/Fig3.png" alt="Latitude vs. Cloudiness">
+          </div>
+
+        </div> <!-- 8 Columns -->
+
+        <div class="col-md-4 pad top"> <br>
+
+          <h3>Observations</h3> <br>
+
+            <div class="pull-right">
+              <p>On 12/10/2017, Cloudiness appears to be distibuted fairly evenly
+                around the globe. There was only one location with 100% cloudiness,
+                (Liwale, Tanzania) while there were 130 location with 0% cloudiness. </p>
+            </div>
+
+        </div> <!-- 4 Columns -->
+
+    </div> <!-- Row -->
+
+  </div> <!-- Container -->
+
+  </body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </html>
