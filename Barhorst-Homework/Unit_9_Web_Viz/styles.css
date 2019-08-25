@@ -1,5 +1,5 @@
 body {
-    background-color: lightgray;
+    background-color: rgb(168, 164, 164);
 }
 
 h1 {
@@ -7,6 +7,12 @@ h1 {
      background-color: white;
      font-family: times new roman;
      font-weight: bold;
+}
+h2{
+  color: rgb(12, 173, 167);
+  background-color: white;
+  font-family: times new roman;
+  font-size: 12
 }
 
 h3 {
